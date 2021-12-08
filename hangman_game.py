@@ -38,7 +38,7 @@ def word_validation():
 
     while set(empty_word) != set(palabra):
         
-        
+        check=bool
         print(f'    tienes {try_counter} intentos')  
 
         print("    "+''.join(empty_word)) 
@@ -55,8 +55,8 @@ def word_validation():
             if letter[0].isdigit()==True:
                 raise ValueError("    no puedes ingresar numeros") 
             
-            check=bool
             
+
             for  i in range(len(palabra)):
                 
                 if palabra[i]==letter:
