@@ -34,30 +34,57 @@ def word_validation():
     empty_word=['_' for i in range(len(palabra))]
     os.system("clear")
 
+    try_counter=10
+
     while set(empty_word) != set(palabra):
-                         
+        
+        
+        print(f'    tienes {try_counter} intentos')  
+
         print("    "+''.join(empty_word)) 
-             
+        
+         
         letter=word_ask().upper()               
         os.system("clear")  
         
         try:
             if len(letter)>1:
                 raise ValueError("    solo puedes ingresar una letra") 
+            if letter=="":
+                raise ValueError("    tienes que ingresar un dato") 
             if letter[0].isdigit()==True:
                 raise ValueError("    no puedes ingresar numeros") 
-
+            
+            check=bool
+            
             for  i in range(len(palabra)):
                 
                 if palabra[i]==letter:
                 
-                    empty_word[i] = letter
+                    empty_word[i] = letter 
+                    check=True
+            
 
         except ValueError as ve:
-            print(ve)    
+            print(ve)  
+
+        if check!=True:
+            try_counter=try_counter-1
+
+        check=False    
+
+        if try_counter == 0:
+            print("se te acabaron los intentos perdiste")
+            break
+    
+        
+    if set(empty_word) == set(palabra):
+        print(f'ganaste la palabra era {palabra}')
+        
+           
     
                 
-    print(f'ganaste la palabra era {palabra}')
+    
                                          
                 
 
