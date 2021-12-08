@@ -25,7 +25,7 @@ def word_ask():
 #en este metodo hacemos la validacion de todo el programa
 #escojemos una palabra random con el metodo random que importe
 #tambien hacemos que se establesca una lista vacia con el tamano de la letra escogida aleatoriamente
-# hacemos un while que compare la 
+# hacemos un while que compare la con el metodo set la palabra random y la lista vacia
 def word_validation():
 
     random_word=lambda list: random.choice(list)
@@ -35,18 +35,27 @@ def word_validation():
     os.system("clear")
 
     while set(empty_word) != set(palabra):
-        
+                         
         print("    "+''.join(empty_word)) 
              
         letter=word_ask().upper()               
-        os.system("clear")
+        os.system("clear")  
+        
+        try:
+            if len(letter)>1:
+                raise ValueError("    solo puedes ingresar una letra") 
+            if letter[0].isdigit()==True:
+                raise ValueError("    no puedes ingresar numeros") 
 
-        for  i in range(len(palabra)):
+            for  i in range(len(palabra)):
                 
-            if palabra[i]==letter:
+                if palabra[i]==letter:
                 
-                empty_word[i] = letter
+                    empty_word[i] = letter
 
+        except ValueError as ve:
+            print(ve)    
+    
                 
     print(f'ganaste la palabra era {palabra}')
                                          
